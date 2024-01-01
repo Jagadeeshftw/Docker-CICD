@@ -1,0 +1,16 @@
+            - name: Setup Jenkins
+  # You may pin to the exact commit or the version.
+  # uses: snow-actions/setup-jenkins@981e4694432cda80d664b10569d8dfc6fb4cb89b
+  uses: snow-actions/setup-jenkins@v1.1.0
+  with:
+    # Jenkins image tag
+    jenkins_image_tag: # optional, default is lts-jdk11
+    # Jenkins home path which will be mounted to /var/jenkins_home.
+Set '' if you don't want to mount.
+
+    jenkins_home: # optional, default is ${{ runner.temp }}/jenkins_home
+    # Jenkins container env_file path
+    env_file: # optional
+    # Override plugins.txt
+    plugins: # optional, default is @
+          
