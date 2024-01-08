@@ -1,0 +1,17 @@
+name: Push Workflow
+on: push
+jobs:
+  push-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the Code
+        uses: actions/checkout@v4
+      - name: Install the Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install the Dependencies
+        run: npm ci
+      - name: Test the Website
+        run: npm test
+
