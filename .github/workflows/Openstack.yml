@@ -1,0 +1,24 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Openstack Deployment
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy devstack
+        uses: EmilienM/devstack-action@v0.6
+        with:
+          branch: stable/xena
+          conf_overrides:
+            CINDER_ISCSI_HELPER=tgtadm
+          enabled_services: 's-account,s-container,s-object,s-proxy'
+    
