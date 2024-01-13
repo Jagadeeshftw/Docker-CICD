@@ -1,0 +1,30 @@
+name: Push and Dispatch Workflow
+on: [ push, workflow_dispatch, pull_request]
+jobs:
+  clone-the-project-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the project
+        uses: actions/checkout@v4
+        run: echo "the project was cloned successfully"
+      - name: Install Dependencies
+        run: npm install
+        run: echo "The dependencies installation was successfully completed"
+      - name: Test the project
+        run: npm run test
+        run: echo "the project was tested successfully"
+      - name: Build the project
+        run: npm run build
+        run: echo "the project was build successfully"
+  Output-The-Github-Context:
+    needs: clone-the-project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the Github context
+        run: echo " ${{toJSON(github)}}"
+  push-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the Github context
+        run: echo " ${{toJSON(github)}}"
+
