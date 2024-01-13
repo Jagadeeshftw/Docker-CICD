@@ -1,0 +1,9 @@
+name: Push and Dispatch Workflow
+on: [ push, workflow_dispatch, pull_request]
+jobs:
+  push-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the Github context
+        run: echo " ${{github}}"
+
